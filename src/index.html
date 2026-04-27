@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Landing Page Project</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Frontend landing page built with HTML, CSS and JavaScript. Clean UI, responsive layout and modern design approach.">
+    <meta name="keywords" content="frontend developer, portfolio, html css javascript, landing page">
+    <meta name="author" content="Oleg Kravchuk">
+
+    <!-- Open Graph  -->
+    <meta property="og:title" content="Frontend Landing Page Project">
+    <meta property="og:description" content="Responsive landing page built with HTML, CSS and JavaScript.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./img/preview.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:site_name" content="Oleg Kravchuk">
+
+    <link rel="canonical" href="#">
+
+    <!-- Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:regular,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:regular,600&display=swap" rel="stylesheet" />
+
+    <!-- fav -->
+    <link rel="icon" type="image/png" href="./img/favicon.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/style.min.css">
+
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Header -->
+        @@include('./html/_header.html')
+
+        <!-- Main Page -->
+        <main class="main">
+            <!-- Hero -->
+            @@include('./html/_hero.html')
+            <!-- Investors -->
+            @@include('./html/_investors.html')
+            <!-- About platform -->
+            @@include('./html/_about-platform.html')
+            <!-- Plans -->
+            @@include('./html/_plans.html')
+            <!-- Why -->
+            @@include('./html/_why.html')
+            <!-- Calculator -->
+            @@include('./html/_calculator.html')
+            <!-- live -->
+            @@include('./html/_live.html')
+            <!-- Demo -->
+            @@include('./html/_demo.html')
+            <!-- Tech -->
+            @@include('./html/_tech.html')
+            <!-- Trust -->
+            @@include('./html/_trust.html')
+            <!-- Reviews -->
+            @@include('./html/_reviews.html')
+            <!-- Steps -->
+            @@include('./html/_steps.html')
+            <!-- Logo brokers ticker -->
+            @@include('./html/_ticker.html')
+            <!-- Faq -->
+            @@include('./html/_faq.html')
+            <!-- CTA -->
+            @@include('./html/_cta.html')
+        </main>
+
+        <!-- Footer -->
+        @@include('./html/_footer.html')
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/scripts.min.js"></script>
+</body>
+
+</html>

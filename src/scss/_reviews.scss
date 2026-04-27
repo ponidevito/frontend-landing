@@ -1,0 +1,140 @@
+.reviews {
+  padding: 100px 0px;
+  background: var(--blue-white);
+  @include xs {
+    padding: 80px 0px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+  &__note {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  &__swiper {
+    position: relative;
+    margin-top: 48px;
+  }
+
+  &__card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e3e8f0;
+    height: 100%;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__avatar {
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--black);
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__city {
+    color: var(--black-txt);
+  }
+
+  &__desc {
+    color: var(--black-txt);
+  }
+
+  .reviews-pagination {
+    position: absolute;
+    left: 0;
+    bottom: -35px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  .swiper-pagination-bullet {
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    opacity: 1;
+    margin: 0 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--black);
+  }
+
+  .swiper__actions {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 10;
+    @media (width < 1340px) {
+      top: unset;
+      left: unset;
+      right: 100px;
+      bottom: 0;
+      width: 0;
+    }
+    @include md {
+      display: none;
+    }
+  }
+  .swiper-slide {
+    height: auto;
+  }
+
+  .swiper__button {
+    background: transparent;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: all;
+    transition: 0.2s ease;
+    border-radius: 50%;
+    &:hover {
+      background: rgba(123, 123, 123, 0.253);
+    }
+    @media (width < 1340px) {
+      transform: translateY(15px);
+    }
+
+    &--prev {
+      left: -70px;
+      @media (width < 1340px) {
+        left: -60px;
+      }
+    }
+    &--next {
+      right: -70px;
+      @media (width < 1340px) {
+        right: -60px;
+      }
+    }
+  }
+}

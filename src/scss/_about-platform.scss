@@ -1,0 +1,52 @@
+.about-platform {
+  padding-bottom: 100px;
+  @include xs {
+    padding-bottom: 80px;
+  }
+
+  &__body {
+    margin: 48px 0px;
+    padding: 48px;
+    display: flex;
+    gap: 24px;
+    background: #fef7e0;
+    border-radius: 16px;
+    @include md {
+      flex-direction: column;
+      padding: 24px;
+    }
+  }
+
+  &__item {
+    flex: 0 1 50%;
+    @include md {
+      flex: 1 1 100%;
+    }
+    &:last-child {
+      img {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &__info {
+    p {
+      color: var(--black-txt);
+    }
+    p:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn {
+      @include xs {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,204 @@
+// ========================= [ Header styles ] =========================
+.header {
+  box-shadow: 0 4px 8px 3px rgba(60, 64, 67, 0.05);
+  border-bottom: 1px solid var(--black-white);
+  position: relative;
+  &.fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+
+  @media (min-width: 768px) {
+    padding: 24px 0;
+  }
+}
+.logo {
+  a img {
+    width: 120px;
+    @media (max-width: 768px) {
+      width: 80px;
+    }
+  }
+}
+
+// ========================== [ Menu styles ] ==========================
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  @include lg {
+    gap: 25px;
+  }
+  @include md {
+    gap: 15px;
+  }
+
+  // .menu__item
+  &__item {
+    display: flex;
+    position: relative;
+  }
+
+  // .menu__item-link
+  &__item-link {
+    display: flex;
+    position: relative;
+    transition: 0.3s;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--black-txt);
+    &.btn {
+      color: var(--white);
+      &:hover {
+        color: var(--white);
+      }
+    }
+    &.btn-nav {
+      padding: 11px 23px;
+    }
+    &:hover {
+      color: var(--blue);
+    }
+  }
+
+  @media screen and (max-width: $burgerBreakpoint) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 8px 24px;
+    padding: 0px 15px 16px 15px;
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background: var(--white);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0s linear 0.2s;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: all;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0s linear 0s;
+    }
+
+    &__item:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    &__item:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    &__item:nth-child(3) {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 8px;
+
+    &__item:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    &__item:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    &__item:nth-child(3) {
+      grid-column: 1;
+      grid-row: 3;
+
+      .btn--nav {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+// ========================= [ Burger styles ] =========================
+
+.effect {
+  display: none;
+  padding: 8px 6px;
+  @media screen and (max-width: $burgerBreakpoint) {
+    display: flex;
+  }
+}
+
+.burger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+
+  @media screen and (max-width: $burgerBreakpoint) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+
+    &:before,
+    &:after,
+    span {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: $burgerColor;
+      transition: 0.3s;
+    }
+
+    &:before {
+      content: "";
+    }
+    &:after {
+      content: "";
+    }
+
+    &.active {
+      &:before {
+        transform: translateY(8px) rotate(45deg);
+      }
+      span {
+        opacity: 0;
+      }
+      &:after {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+}

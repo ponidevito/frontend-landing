@@ -1,0 +1,67 @@
+<section class="calculator">
+    <div class="calculator__container container">
+        <div class="calculator__body">
+
+            <div class="calculator__info">
+                <h2 class="calculator__title title-h2">
+                    Interactive UI Demo
+                </h2>
+
+                <p class="calculator__text">
+                    This interactive component demonstrates dynamic UI updates using JavaScript.
+                    Users can adjust values and instantly see changes, showcasing real-time interaction
+                    and responsive behavior.
+                </p>
+
+                <div class="calculator__actions">
+                    <a href="#" class="btn">Try Interaction</a>
+                </div>
+            </div>
+
+            <div class="calculator__widget">
+
+                <div class="calculator__row">
+                    <span class="calculator__label">Items</span>
+                    <span class="calculator__value calculator__value--green" id="deposit-val">1</span>
+                </div>
+
+                <input class="calculator__range calculator__range--green" type="range" id="deposit" min="1" max="6"
+                    value="1">
+
+                <div class="calculator__marks">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                </div>
+
+                <div class="calculator__row">
+                    <span class="calculator__label">Complexity</span>
+                    <span class="calculator__value calculator__value--blue" id="period-val">Basic</span>
+                </div>
+
+                <input class="calculator__range calculator__range--blue" type="range" id="period" min="0" max="2"
+                    value="0">
+
+                <div class="calculator__marks">
+                    <span>Basic</span>
+                    <span>Medium</span>
+                    <span>Advanced</span>
+                </div>
+
+                <div class="calculator__result">
+                    <p class="calculator__result-label">Estimated Result</p>
+                    <p class="calculator__result-value" id="result-val">Simple Layout</p>
+                </div>
+
+            </div>
+
+            <div class="calculator__actions calculator__actions--mobile">
+                <a href="#" class="btn">Try Interaction</a>
+            </div>
+
+        </div>
+    </div>
+</section>

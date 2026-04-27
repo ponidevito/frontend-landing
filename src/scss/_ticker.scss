@@ -1,0 +1,34 @@
+.ticker {
+  overflow: hidden;
+  padding-bottom: 100px;
+  @include xs {
+    padding-bottom: 80px;
+  }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  &__item {
+    box-shadow: 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+    border: 1px solid var(--black-white);
+    border-radius: 4px;
+    width: 170px;
+    height: 51px;
+
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 32px;
+    padding: 10px 20px;
+    img {
+      max-width: 100%;
+    }
+  }
+}

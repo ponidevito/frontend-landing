@@ -1,0 +1,87 @@
+.why {
+  padding: 100px 0px;
+  @include xs {
+    padding: 80px 0px;
+  }
+
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__subtitle {
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+    @include md {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    padding: 32px;
+    flex: 0 1 50%;
+    background: var(--blue-white);
+    border-radius: 12px;
+    overflow: hidden;
+    @include xs {
+      padding: 24px;
+    }
+
+    picture img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: var(--black-txt);
+    }
+
+    &.right-item {
+      background: #fef7e0;
+    }
+  }
+
+  &__list-title {
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--black);
+    border-bottom: 1px solid var(--black-white);
+    padding-bottom: 16px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    @include xs {
+      font-size: 20px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__list-item {
+    color: var(--black-txt);
+    padding-left: 16px;
+    position: relative;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--black-txt);
+    }
+  }
+}

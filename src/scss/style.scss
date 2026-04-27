@@ -1,0 +1,74 @@
+// Global SCSS-files imports
+@import "./vars";
+@import "./mixins";
+@import "./reset";
+@import "./global";
+
+// Sections or Pages SCSS-files imports
+@import "./header";
+@import "./hero";
+@import "./investors";
+@import "./about-platform";
+@import "./plans";
+@import "./why";
+@import "./calculator";
+@import "./live";
+@import "./demo";
+@import "./tech";
+@import "./trust";
+@import "./reviews";
+@import "./steps";
+@import "./ticker";
+@import "./faq";
+@import "./cta";
+@import "./footer";
+
+// Libs
+@import "./libs/swiper";
+
+:root {
+  --black: #202124;
+  --black-txt: #5f6368;
+  --black-white: #dadce0;
+  --red: #ea4335;
+  --green: #109c35;
+  --blue: #1a73e8;
+  --blue-white: #e8f0fe;
+  --white: #fff;
+}
+
+:root {
+  --font-family: "Google Sans", sans-serif;
+  --second-family: "Poppins", sans-serif;
+  // --third-family: "SF Pro Display", sans-serif;
+  // --font3: "SF Pro", sans-serif;
+  // --font4: "SF Compact Text", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Google Sans", sans-serif;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 16px;
+  background: var(--white);
+  color: var(--black-txt);
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.main {
+  flex: 1 1 auto;
+  position: relative;
+}

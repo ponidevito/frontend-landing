@@ -1,0 +1,88 @@
+.faq {
+  padding-bottom: 100px;
+  @include xs {
+    padding-bottom: 80px;
+  }
+}
+
+.accordion {
+  margin-top: 48px;
+  &__item {
+    background: #e5ebf5;
+    border-radius: 8px;
+    padding: 48px;
+    margin-bottom: 16px;
+    transition: 0.3s;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include xs {
+      padding: 24px;
+    }
+  }
+
+  //  trigger
+  .accordion__item-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .trigger__text {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--black);
+  }
+
+  .trigger__img {
+    margin-left: auto;
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+
+  .trigger__line-1,
+  .trigger__line-2 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background: #1a73e8;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  .trigger__line-2 {
+    transform: rotate(90deg);
+  }
+
+  //  content
+  .accordion__item-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  .content__text {
+    margin-top: 24px;
+    color: var(--black-txt);
+  }
+
+  &__item.accordion__item-active {
+    .accordion__item-content {
+      max-height: 200px;
+    }
+
+    .trigger__line-2 {
+      transform: rotate(0);
+    }
+
+    .trigger__line-1 {
+      opacity: 0;
+    }
+  }
+}
