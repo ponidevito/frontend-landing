@@ -1,0 +1,122 @@
+.features {
+  padding: 0px 0 100px 0px;
+
+  @include md {
+     padding: 0px 0 80px 0px;
+  }
+
+  &__box {
+    background: #edf5ef;
+    border-radius: 16px;
+    padding: 48px;
+    &:not(:last-child) {
+      margin-bottom: 64px;
+    }
+    @include md {
+      padding: 24px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    gap: 24px;
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+    @include lg {
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    flex: 0 1 50%;
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    flex: 0 1 50%;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--black);
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+    @include xs {
+      font-size: 20px;
+    }
+  }
+
+  &__list {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    font-family: var(--second-family);
+    font-weight: 400;
+    color: var(--black-txt);
+    padding-left: 16px;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--black-txt);
+      position: absolute;
+      left: 0;
+      top: 11px;
+    }
+  }
+
+  &__text {
+    font-family: var(--second-family);
+    font-weight: 400;
+    color: var(--black-txt);
+  }
+
+  &__bottom-text {
+    font-family: var(--font-family);
+    font-weight: 700;
+    color: var(--black);
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    .btn {
+    //   min-width: 220px;
+    }
+  }
+  &__actions-text {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--black);
+    &:not(:last-child) {
+      font-size: 18px;
+    }
+  }
+}

@@ -33,47 +33,53 @@ burgerMenu();
 const items = document.getElementById("deposit");
 const complexity = document.getElementById("period");
 
-const itemsVal = document.getElementById("deposit-val");
-const complexityVal = document.getElementById("period-val");
-const resultVal = document.getElementById("result-val");
+if (items && complexity) {
+  const itemsVal = document.getElementById("deposit-val");
+  const complexityVal = document.getElementById("period-val");
+  const resultVal = document.getElementById("result-val");
 
-const complexityText = ["Basic", "Medium", "Advanced"];
-const resultText = ["Simple Layout", "Interactive UI", "Advanced Interface"];
+  const complexityText = ["Basic", "Medium", "Advanced"];
+  const resultText = ["Simple Layout", "Interactive UI", "Advanced Interface"];
 
-function updateSliderFill(slider, color) {
-  const min = Number(slider.min);
-  const max = Number(slider.max);
-  const value = Number(slider.value);
+  function updateSliderFill(slider, color) {
+    const min = Number(slider.min);
+    const max = Number(slider.max);
+    const value = Number(slider.value);
 
-  const percent = ((value - min) / (max - min)) * 100;
+    const percent = ((value - min) / (max - min)) * 100;
 
-  slider.style.background = `linear-gradient(to right, ${color} ${percent}%, #ffffff ${percent}%)`;
-}
+    slider.style.background = `
+      linear-gradient(
+        to right,
+        ${color} ${percent}%,
+        #ffffff ${percent}%
+      )
+    `;
+  }
 
-function update() {
-  const itemsValue = Number(items.value);
-  const complexityValue = Number(complexity.value);
+  function update() {
+    const itemsValue = Number(items.value);
+    const complexityValue = Number(complexity.value);
 
-  itemsVal.textContent = itemsValue;
-  complexityVal.textContent = complexityText[complexityValue];
-  resultVal.textContent = resultText[complexityValue];
-}
+    itemsVal.textContent = itemsValue;
+    complexityVal.textContent = complexityText[complexityValue];
+    resultVal.textContent = resultText[complexityValue];
+  }
 
-// listeners
-items.addEventListener("input", () => {
+  items.addEventListener("input", () => {
+    updateSliderFill(items, "#16a34a");
+    update();
+  });
+
+  complexity.addEventListener("input", () => {
+    updateSliderFill(complexity, "#2563eb");
+    update();
+  });
+
   updateSliderFill(items, "#16a34a");
-  update();
-});
-
-complexity.addEventListener("input", () => {
   updateSliderFill(complexity, "#2563eb");
   update();
-});
-
-// init
-updateSliderFill(items, "#16a34a");
-updateSliderFill(complexity, "#2563eb");
-update();
+}
 
 // live table
 const tbody = document.getElementById("table-body");
@@ -101,69 +107,70 @@ const tbody = document.getElementById("table-body");
 //   { name: "Clara W.", avatar: "img/live/clara.jpg" },
 // ];
 
-const people = [
-  { name: "Alex M.", avatar: "img/live/antoine.jpg" },
-  { name: "Emma D.", avatar: "img/live/elodie.jpg" },
-  { name: "Daniel L.", avatar: "img/live/baptiste.jpg" },
-  { name: "Olivia R.", avatar: "img/live/chloe.jpg" },
-  { name: "Michael P.", avatar: "img/live/maxime.jpg" },
-  { name: "Sophia C.", avatar: "img/live/manon.jpg" },
-  { name: "James F.", avatar: "img/live/adrien.jpg" },
-  { name: "Isabella T.", avatar: "img/live/lea.jpg" },
-  { name: "Ethan M.", avatar: "img/live/hugo.jpg" },
-  { name: "Charlotte S.", avatar: "img/live/camille.jpg" },
-  { name: "Jacob B.", avatar: "img/live/theo.jpg" },
-  { name: "Mia V.", avatar: "img/live/ines.jpg" },
-  { name: "William J.", avatar: "img/live/quentin.jpg" },
-  { name: "Amelia N.", avatar: "img/live/maelle.jpg" },
-  { name: "Lucas A.", avatar: "img/live/lucas.jpg" },
-  { name: "Harper K.", avatar: "img/live/anais.jpg" },
-  { name: "Henry E.", avatar: "img/live/louis.jpg" },
-  { name: "Emily H.", avatar: "img/live/juliette.jpg" },
-  { name: "Benjamin O.", avatar: "img/live/nathan.jpg" },
-  { name: "Grace W.", avatar: "img/live/clara.jpg" },
-];
+if (tbody) {
+  const people = [
+    { name: "Alex M.", avatar: "img/live/antoine.jpg" },
+    { name: "Emma D.", avatar: "img/live/elodie.jpg" },
+    { name: "Daniel L.", avatar: "img/live/baptiste.jpg" },
+    { name: "Olivia R.", avatar: "img/live/chloe.jpg" },
+    { name: "Michael P.", avatar: "img/live/maxime.jpg" },
+    { name: "Sophia C.", avatar: "img/live/manon.jpg" },
+    { name: "James F.", avatar: "img/live/adrien.jpg" },
+    { name: "Isabella T.", avatar: "img/live/lea.jpg" },
+    { name: "Ethan M.", avatar: "img/live/hugo.jpg" },
+    { name: "Charlotte S.", avatar: "img/live/camille.jpg" },
+    { name: "Jacob B.", avatar: "img/live/theo.jpg" },
+    { name: "Mia V.", avatar: "img/live/ines.jpg" },
+    { name: "William J.", avatar: "img/live/quentin.jpg" },
+    { name: "Amelia N.", avatar: "img/live/maelle.jpg" },
+    { name: "Lucas A.", avatar: "img/live/lucas.jpg" },
+    { name: "Harper K.", avatar: "img/live/anais.jpg" },
+    { name: "Henry E.", avatar: "img/live/louis.jpg" },
+    { name: "Emily H.", avatar: "img/live/juliette.jpg" },
+    { name: "Benjamin O.", avatar: "img/live/nathan.jpg" },
+    { name: "Grace W.", avatar: "img/live/clara.jpg" },
+  ];
 
-function randomItem(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+  function randomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 
-function getUsedNames() {
-  return [...tbody.querySelectorAll(".table__name")].map(
-    (el) => el.textContent,
-  );
-}
+  function getUsedNames() {
+    return [...tbody.querySelectorAll(".table__name")].map(
+      (el) => el.textContent,
+    );
+  }
 
-function getUniquePerson() {
-  const used = getUsedNames();
+  function getUniquePerson() {
+    const used = getUsedNames();
 
-  let person;
-  let attempts = 0;
+    let person;
+    let attempts = 0;
 
-  do {
-    person = randomItem(people);
-    attempts++;
-  } while (used.includes(person.name) && attempts < 50);
+    do {
+      person = randomItem(people);
+      attempts++;
+    } while (used.includes(person.name) && attempts < 50);
 
-  return person;
-}
+    return person;
+  }
 
-function generateRow() {
-  const tr = document.createElement("tr");
-  tr.className = "table__row";
+  function generateRow() {
+    const tr = document.createElement("tr");
+    tr.className = "table__row";
 
-  const person = getUniquePerson();
-  const balanceNum = Math.floor(5000 + Math.random() * 20000);
-  const variationNum = Math.floor(balanceNum * (0.01 + Math.random() * 0.03));
-  const perfNum = ((variationNum / balanceNum) * 100).toFixed(1);
+    const person = getUniquePerson();
+    const balanceNum = Math.floor(5000 + Math.random() * 20000);
+    const variationNum = Math.floor(balanceNum * (0.01 + Math.random() * 0.03));
+    const perfNum = ((variationNum / balanceNum) * 100).toFixed(1);
 
-  const balance = `$${balanceNum.toLocaleString("en-US")}`;
-  const variation = `+$${variationNum.toLocaleString("en-US")}`;
-  const perf = `${perfNum}%`;
+    const balance = `$${balanceNum.toLocaleString("en-US")}`;
+    const variation = `+$${variationNum.toLocaleString("en-US")}`;
+    const perf = `${perfNum}%`;
 
-  const time = new Date().toLocaleTimeString("en-US");
+    const time = new Date().toLocaleTimeString("en-US");
 
-  tr.innerHTML = `
+    tr.innerHTML = `
     <td class="table__cell">
       <img class="table__avatar" src="${person.avatar}" alt="${person.name}">
       <span class="table__name">${person.name}</span>
@@ -174,75 +181,80 @@ function generateRow() {
     <td class="table__cell cell-time">${time}</td>
   `;
 
-  return tr;
-}
+    return tr;
+  }
 
-for (let i = 0; i < 7; i++) {
-  tbody.appendChild(generateRow());
-}
+  for (let i = 0; i < 7; i++) {
+    tbody.appendChild(generateRow());
+  }
 
-const wrapper = document.querySelector(".live__table-wrapper");
+  const wrapper = document.querySelector(".live__table-wrapper");
 
-const images = tbody.querySelectorAll("img");
-const imagePromises = [...images].map((img) =>
-  img.complete
-    ? Promise.resolve()
-    : new Promise((res) => {
-        img.onload = res;
-        img.onerror = res;
-      }),
-);
-Promise.all(imagePromises).then(() => {
-  requestAnimationFrame(() => {
-    wrapper.style.height = wrapper.offsetHeight + "px";
+  const images = tbody.querySelectorAll("img");
+  const imagePromises = [...images].map((img) =>
+    img.complete
+      ? Promise.resolve()
+      : new Promise((res) => {
+          img.onload = res;
+          img.onerror = res;
+        }),
+  );
+  Promise.all(imagePromises).then(() => {
+    requestAnimationFrame(() => {
+      wrapper.style.height = wrapper.offsetHeight + "px";
+    });
   });
-});
 
-setInterval(() => {
-  const firstRow = tbody.firstElementChild;
-  const rowHeight = firstRow.offsetHeight;
+  setInterval(() => {
+    const firstRow = tbody.firstElementChild;
+    const rowHeight = firstRow.offsetHeight;
 
-  tbody.appendChild(generateRow());
+    tbody.appendChild(generateRow());
 
-  tbody.style.transition = "transform 0.6s ease";
-  tbody.style.transform = `translateY(-${rowHeight}px)`;
+    tbody.style.transition = "transform 0.6s ease";
+    tbody.style.transform = `translateY(-${rowHeight}px)`;
 
-  setTimeout(() => {
-    tbody.style.transition = "none";
-    tbody.style.transform = "translateY(0)";
-    firstRow.remove();
-  }, 620);
-}, 2000);
+    setTimeout(() => {
+      tbody.style.transition = "none";
+      tbody.style.transform = "translateY(0)";
+      firstRow.remove();
+    }, 620);
+  }, 2000);
+}
 
 // slider
-const swiper = new Swiper(".swiper__reviews", {
-  slidesPerView: 2,
-  spaceBetween: 20,
-  loop: true,
+const reviewsSlider = document.querySelector(".swiper__reviews");
 
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
+if (reviewsSlider) {
+  const swiper = new Swiper(".swiper__reviews", {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    loop: true,
 
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper__button--next",
-    prevEl: ".swiper__button--prev",
-  },
-
-  //   // Responsive breakpoints
-  breakpoints: {
-    // when window width is >= 320px
-    320: {
-      slidesPerView: 1,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
     },
-    // when window width is >= 480px
-    768: {
-      slidesPerView: 2,
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper__button--next",
+      prevEl: ".swiper__button--prev",
     },
-  },
-});
+
+    //   // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+      },
+      // when window width is >= 480px
+      768: {
+        slidesPerView: 2,
+      },
+    },
+  });
+}
 
 // Accordion
 function accordion() {
