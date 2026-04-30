@@ -1,0 +1,65 @@
+.contact-hero {
+  padding: 64px 0 100px 0px;
+
+  @include md {
+    padding: 48px 0 80px 0px;
+  }
+
+  &__body {
+    display: flex;
+    gap: 48px;
+    justify-content: space-between;
+
+    @include lg {
+      flex-direction: column;
+    }
+  }
+
+  &__content {
+    flex: 0 1 55%;
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    @include lg {
+      max-width: 100%;
+      flex: 1 1 100%;
+    }
+  }
+
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--black-txt);
+    &:not(:last-child) {
+      margin-bottom: 24px;
+      @include xs {
+        margin-bottom: 0px;
+      }
+    }
+
+    @include xs {
+      font-size: 18px;
+    }
+  }
+
+  &__image {
+    max-width: 320px;
+    @include lg {
+      display: none;
+    }
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+  &__form {
+    flex: 0 0 486px;
+  }
+}
