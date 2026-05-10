@@ -1,8 +1,9 @@
 // burger
+
+const body = document.querySelector("body");
 function burgerMenu() {
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
-  const body = document.querySelector("body");
 
   if (!burger || !menu) return;
 
@@ -23,7 +24,6 @@ function burgerMenu() {
       menu.classList.remove("active");
       burger.classList.remove("active");
       burger.setAttribute("aria-expanded", "false");
-      body.classList.remove("locked");
     }
   });
 }
@@ -84,29 +84,6 @@ if (items && complexity) {
 // live table
 const tbody = document.getElementById("table-body");
 
-// const people = [
-//   { name: "Antoine G.", avatar: "img/live/antoine.jpg" },
-//   { name: "Élodie D.", avatar: "img/live/elodie.jpg" },
-//   { name: "Baptiste L.", avatar: "img/live/baptiste.jpg" },
-//   { name: "Chloé R.", avatar: "img/live/chloe.jpg" },
-//   { name: "Maxime P.", avatar: "img/live/maxime.jpg" },
-//   { name: "Manon C.", avatar: "img/live/manon.jpg" },
-//   { name: "Adrien F.", avatar: "img/live/adrien.jpg" },
-//   { name: "Léa T.", avatar: "img/live/lea.jpg" },
-//   { name: "Hugo M.", avatar: "img/live/hugo.jpg" },
-//   { name: "Camille S.", avatar: "img/live/camille.jpg" },
-//   { name: "Théo B.", avatar: "img/live/theo.jpg" },
-//   { name: "Inès V.", avatar: "img/live/ines.jpg" },
-//   { name: "Quentin J.", avatar: "img/live/quentin.jpg" },
-//   { name: "Maëlle N.", avatar: "img/live/maelle.jpg" },
-//   { name: "Lucas A.", avatar: "img/live/lucas.jpg" },
-//   { name: "Anaïs K.", avatar: "img/live/anais.jpg" },
-//   { name: "Louis E.", avatar: "img/live/louis.jpg" },
-//   { name: "Juliette H.", avatar: "img/live/juliette.jpg" },
-//   { name: "Nathan O.", avatar: "img/live/nathan.jpg" },
-//   { name: "Clara W.", avatar: "img/live/clara.jpg" },
-// ];
-
 if (tbody) {
   const people = [
     { name: "Alex M.", avatar: "img/live/antoine.jpg" },
@@ -135,24 +112,11 @@ if (tbody) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  function getUsedNames() {
-    return [...tbody.querySelectorAll(".table__name")].map(
-      (el) => el.textContent,
-    );
-  }
+  const usedNames = new Set();
 
   function getUniquePerson() {
-    const used = getUsedNames();
-
-    let person;
-    let attempts = 0;
-
-    do {
-      person = randomItem(people);
-      attempts++;
-    } while (used.includes(person.name) && attempts < 50);
-
-    return person;
+    const available = people.filter((p) => !usedNames.has(p.name));
+    return randomItem(available.length ? available : people);
   }
 
   function generateRow() {
@@ -160,6 +124,7 @@ if (tbody) {
     tr.className = "table__row";
 
     const person = getUniquePerson();
+    usedNames.add(person.name);
     const balanceNum = Math.floor(5000 + Math.random() * 20000);
     const variationNum = Math.floor(balanceNum * (0.01 + Math.random() * 0.03));
     const perfNum = ((variationNum / balanceNum) * 100).toFixed(1);
@@ -208,6 +173,7 @@ if (tbody) {
   setInterval(() => {
     const firstRow = tbody.firstElementChild;
     const rowHeight = firstRow.offsetHeight;
+    const removedName = firstRow.querySelector(".table__name").textContent; // ← зчитуємо перед видаленням
 
     tbody.appendChild(generateRow());
 
@@ -218,6 +184,7 @@ if (tbody) {
       tbody.style.transition = "none";
       tbody.style.transform = "translateY(0)";
       firstRow.remove();
+      usedNames.delete(removedName);
     }, 620);
   }, 2000);
 }
@@ -427,4 +394,69 @@ function clearState(input) {
 
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// login modal
+
+const loginBtn = document.querySelector(".header__login");
+const loginModal = document.getElementById("login-modal");
+const loginClose = document.querySelector(".login-modal__close");
+const loginOverlay = document.querySelector(".login-modal__overlay");
+
+if (loginBtn && loginModal) {
+  loginBtn.addEventListener("click", () => {
+    loginModal.classList.add("active");
+    body.classList.add("locked");
+  });
+}
+
+function closeLoginModal() {
+  loginModal.classList.remove("active");
+  body.classList.remove("locked");
+}
+
+if (loginClose) {
+  loginClose.addEventListener("click", closeLoginModal);
+}
+
+if (loginOverlay) {
+  loginOverlay.addEventListener("click", closeLoginModal);
+}
+
+// active navigation menu
+
+const currentPage = window.location.pathname.split("/").pop();
+
+const menuLinks = document.querySelectorAll(".menu__item-link");
+
+menuLinks.forEach((link) => {
+  const linkPath = link.getAttribute("href");
+
+  if (linkPath === currentPage || (currentPage === "" && linkPath === "/")) {
+    link.classList.add("active");
+  }
+});
+
+// scroll top
+
+const scrollTopBtn = document.querySelector(".scroll-top");
+
+if (scrollTopBtn) {
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        scrollTopBtn.classList.toggle("show", window.scrollY > 800);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 }

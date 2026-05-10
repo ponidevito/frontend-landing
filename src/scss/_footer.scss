@@ -13,8 +13,18 @@
     }
   }
   &__logo {
+    max-width: 120px;
     @include xs {
       text-align: center;
+    }
+    a img {
+      width: 100px;
+      @include md {
+        width: 80px;
+      }
+      @include xs {
+        width: 60px;
+      }
     }
   }
 
