@@ -91,7 +91,7 @@ gulp
 ## Disclaimer
 
 This website is a demo frontend project created for portfolio and educational purposes only.  
-All testimonials, interface content and interactions are fictional and used исключительно for demonstration purposes.
+All testimonials, interface content and interactions are fictional and used exclusively for demonstration purposes.
 
 ---
 
