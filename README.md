@@ -6,6 +6,7 @@ The project showcases responsive layouts, reusable UI components, animations and
 ## Live Demo
 
 Demo https://ponidevito.github.io/ok-landing/
+<img width="1355" height="923" alt="image" src="https://github.com/user-attachments/assets/0f32c87e-75de-473f-b428-a667223b319b" />
 
 ---
 
